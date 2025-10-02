@@ -1,5 +1,16 @@
 #!/bin/bash
 
+# 0) Ensure .env file exists (copy from example.env if missing)
+if [ ! -f ".env" ]; then
+    if [ -f "example.env" ]; then
+        cp example.env .env
+        echo ".env created from example.env"
+    else
+        echo "example.env not found! Please create .env manually."
+        exit 1
+    fi
+fi
+
 # 1) Create app structure if it doesn't exist
 if [ ! -d "app" ]; then
     mkdir -p app/helpers
